@@ -46,4 +46,14 @@ public class BookController {
     public void deleteBook(@PathVariable Long id) {
         bookService.deleteBook(id);
     }
+
+    @GetMapping("/author") // http://localhost:8080/books/author?author=Victor%20Hugo
+    public ResponseEntity<List<Book>> getBooksByAuthor(@RequestParam String author) {
+        return ResponseEntity.ok(bookService.getBooksByAuthor(author));
+    }
+
+    @GetMapping("/year")
+    public ResponseEntity<List<Book>> findAllByOrderByPublishYearAsc() {
+        return ResponseEntity.ok(bookService.findAllByOrderByPublishYearAsc());
+    }
 }

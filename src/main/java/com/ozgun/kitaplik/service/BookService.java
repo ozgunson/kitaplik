@@ -42,4 +42,12 @@ public class BookService {
     public void deleteBook(Long id) {
         bookRepository.deleteById(id);
     }
+
+    public List<Book> getBooksByAuthor(String name) {
+        return bookRepository.getBooksByAuthor(name);
+    }
+
+    public List<Book> findAllByOrderByPublishYearAsc() {
+        return bookRepository.findAllByOrderByPublishYearAsc();
+    }
 }

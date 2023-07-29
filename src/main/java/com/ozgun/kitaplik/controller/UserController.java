@@ -1,5 +1,6 @@
 package com.ozgun.kitaplik.controller;
 
+import com.ozgun.kitaplik.model.Book;
 import com.ozgun.kitaplik.model.User;
 import com.ozgun.kitaplik.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,6 +46,21 @@ public class UserController {
     @DeleteMapping("/{id}")
     public void deleteUser(@PathVariable Long id) {
         userService.deleteUser(id);
+    }
+
+    @PutMapping("/{userId}/addbook/{bookId}")
+    public void addBookToUser(@PathVariable Long userId, @PathVariable Long bookId) {
+        userService.addBookToUser(userId, bookId);
+    }
+
+    @PutMapping("/{userId}/deletebook/{bookId}")
+    public void deleteBookFromUser(@PathVariable Long userId, @PathVariable Long bookId) {
+        userService.deleteBookFromUser(userId, bookId);
+    }
+
+    @GetMapping("/userbybook/{bookId}")
+    public ResponseEntity<List<User>> findAllByBooksContaining(@PathVariable Long bookId) {
+        return ResponseEntity.ok(userService.findAllByBooksContaining(bookId));
     }
 
 }

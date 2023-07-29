@@ -1,5 +1,6 @@
 package com.ozgun.kitaplik.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -30,6 +31,7 @@ public class Book {
 
     private int readingCount;
 
+    @JsonIgnore
     @ManyToMany(mappedBy = "books")
     private List<User> users;
 
